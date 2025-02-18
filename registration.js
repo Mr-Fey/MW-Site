@@ -58,6 +58,7 @@ if (themeParams.theme === 'dark') {
     document.body.classList.add('light');
 }
 
+
 document.getElementById('registrationForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -72,11 +73,11 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         trainer: document.getElementById('trainer').value,
     };
 
-    console.log("Form data: ", formData); 
+    console.log("Form data: ", formData);
 
     tg.sendData(JSON.stringify(formData));
 
     alert("Заявка отправлена администрации, ожидайте!");
 
-    tg.close(); 
-});
+    tg.close();
+}); 
