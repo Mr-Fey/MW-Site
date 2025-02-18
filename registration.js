@@ -1,5 +1,15 @@
+document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        if (window.Telegram && window.Telegram.WebApp) {
+            const tg = window.Telegram.WebApp;
+            console.log("Telegram API загружен:", tg);
+        } else {
+            console.error("Telegram API не загружен!");
+        }
+    }, 1000);
+});
+
 console.log("window.Telegram:", window.Telegram);
-const tg = window.Telegram.WebApp;
 const language = tg.language; 
 const elements = {
     "form-title": {
