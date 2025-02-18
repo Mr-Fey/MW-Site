@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const tg = window.Telegram.WebApp;
         console.log("Telegram WebApp API загружен", tg);
     } else {
-        console.error("Telegram API не загруженн!");
+        console.error("Telegram API не загруженн");
     }
 });
 
