@@ -77,7 +77,5 @@ document.getElementById('registrationForm').addEventListener('submit', function(
 
     tg.sendData(JSON.stringify(formData));
 
-    alert("Заявка отправлена администрации, ожидайте!");
-
     tg.close();
 }); 
