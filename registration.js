@@ -1,4 +1,5 @@
 const tg = window.Telegram.WebApp
+console.log("Telegram API Загрузило бл")
 const language = tg.language; 
 const elements = {
     "form-title": {
