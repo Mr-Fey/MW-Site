@@ -1,3 +1,4 @@
+console.log("window.Telegram:", window.Telegram);
 const tg = window.Telegram.WebApp;
 const language = tg.language; 
 const elements = {
