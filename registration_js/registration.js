@@ -20,5 +20,4 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     console.log("Form data: ", formData);
 
     tg.sendData(JSON.stringify(formData));
-    tg.close();
 });
