@@ -1,6 +1,3 @@
-const tg = window.Telegram.WebApp
-console.log("Telegram API Загрузило бл ")
-const language = tg.language; 
 const elements = {
     "form-title": {
         "en": "Registration",
@@ -40,6 +37,7 @@ const elements = {
     }
 };
 
+
 function setLanguage(language) {
     for (const [id, translations] of Object.entries(elements)) {
         const element = document.getElementById(id);
@@ -50,32 +48,3 @@ function setLanguage(language) {
 }
 
 setLanguage(language);
-
-const themeParams = tg.themeParams;
-if (themeParams.theme === 'dark') {
-    document.body.classList.add('dark');
-} else {
-    document.body.classList.add('light');
-}
-
-
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const formData = {
-        request: "registration",
-        name: document.getElementById('name').value,
-        logo: document.getElementById('logo').value,
-        prime: document.getElementById('prime').value,
-        leader: document.getElementById('leader').value,
-        members: document.getElementById('members').value,
-        manager: document.getElementById('manager').value,
-        trainer: document.getElementById('trainer').value,
-    };
-
-    console.log("Form data: ", formData);
-
-    tg.sendData(JSON.stringify(formData));
-
-    tg.close();
-}); 

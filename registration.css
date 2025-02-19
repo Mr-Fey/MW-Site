@@ -1,23 +1,12 @@
-body.light {
+body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #ffffff;
-    color: #000;
-}
-
-body.dark {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #1e1e1e;
-    color: #fff;
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
 }
 
 .form-container {
@@ -42,14 +31,8 @@ body.dark {
     margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #444;
-    background-color: #f5f5f5;
-    color: #000;
-}
-
-body.dark .form-container input, body.dark .form-container textarea {
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #444;
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
 }
 
 .form-container button {
