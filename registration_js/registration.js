@@ -1,7 +1,6 @@
 const tg = window.Telegram.WebApp;
 tg.ready();
 tg.expand();
-console.log("Telegram API загружено");
 
 document.getElementById('registrationForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -17,7 +16,6 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         trainer: document.getElementById('trainer').value,
     };
 
-    console.log("Form data: ", formData);
-
-    tg.sendData(formData); 
+    tg.sendData(JSON.stringify(formData)); 
+    tg.close();
 });
