@@ -1,6 +1,3 @@
-const tg = window.Telegram.WebApp;
-tg.ready();
-tg.expand();
 
 document.getElementById('editForm').addEventListener('submit', function(event) {
     event.preventDefault();
