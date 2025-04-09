@@ -1,7 +1,11 @@
+const tg = window.Telegram.WebApp;
+tg.ready();
+tg.expand();
+const language = tg.language
 const elements = {
     "form-title": {
-        "en": "Registration",
-        "ru": "Регистрация"
+        "en": "Edit Team",
+        "ru": "Редактировать команду"
     },
     "label-name": {
         "en": "Team Name:",
@@ -19,17 +23,17 @@ const elements = {
         "en": "Leader (Username):",
         "ru": "Лидер (Username):"
     },
-    "label-members": {
-        "en": "Members (Comma separated):",
-        "ru": "Участники (через запятую):"
+    "label-kick": {
+        "en": "Kick user:",
+        "ru": "Кик пользователя(-ей):"
     },
     "label-manager": {
-        "en": "Manager (Username):",
-        "ru": "Менеджер (Username):"
+        "en": "Manager (@Username):",
+        "ru": "Менеджер (@Username):"
     },
     "label-trainer": {
-        "en": "Trainer (Username):",
-        "ru": "Тренер (Username):"
+        "en": "Trainer (@Username):",
+        "ru": "Тренер (@Username):"
     },
     "submit-btn": {
         "en": "Submit",
