@@ -26,7 +26,8 @@ document.getElementById('editForm').addEventListener('submit', function(event) {
                 leader: leader,
                 manager: manager,
                 trainer: trainer,
-                kick: kick
+                kick: kick,
+                chat_id: tg.initDataUnsafe.user.id
             };
 
             const response = fetch(import.meta.env.VITE_API_URL + '/edit', {
@@ -46,7 +47,8 @@ document.getElementById('editForm').addEventListener('submit', function(event) {
             leader: leader,
             manager: manager,
             trainer: trainer,
-            kick: kick
+            kick: kick,
+            chat_id: tg.initDataUnsafe.user.id
         };
 
         const response = fetch(import.meta.env.VITE_API_URL + '/edit', {

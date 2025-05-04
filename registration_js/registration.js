@@ -19,7 +19,8 @@ document.getElementById('registrationForm').addEventListener('submit', function(
                 logo: {
                     fileType: file.type,
                     fileBytes: byteArray  
-                }
+                }, 
+                chat_id: tg.initDataUnsafe.user.id
             };
 
             const response = fetch(import.meta.env.VITE_API_URL + '/register', {
@@ -35,7 +36,8 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         const formData = {
             name: name,
             prime: prime,
-            logo: null
+            logo: null,
+            chat_id: tg.initDataUnsafe.user.id
         };
 
         const response = fetch(import.meta.env.VITE_API_URL + '/register', {
