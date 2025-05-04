@@ -1,18 +1,59 @@
-
 document.getElementById('editForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const formData = {
-        request: "edit",
-        name: document.getElementById('name').value,
-        logo: document.getElementById('logo').value,
-        prime: document.getElementById('prime').value,
-        leader: document.getElementById('leader').value,
-        manager: document.getElementById('manager').value, 
-        trainer: document.getElementById('trainer').value, 
-        kick: document.getElementById('kick').value
-    };
+    const name = document.getElementById('name').value;
+    const prime = document.getElementById('prime').value;
+    const leader = document.getElementById('leader').value;
+    const manager = document.getElementById('manager').value;
+    const trainer = document.getElementById('trainer').value;
+    const kick = document.getElementById('kick').value;
+    const fileInput = document.getElementById('logo');
+    const file = fileInput.files[0];
 
-    tg.sendData(JSON.stringify(formData)); 
-    tg.close();
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const base64Data = e.target.result.split(',')[1];
+
+            const formData = {
+                name: name,
+                logo: {
+                    fileType: file.type,
+                    fileData: base64Data
+                },
+                prime: prime,
+                leader: leader,
+                manager: manager,
+                trainer: trainer,
+                kick: kick
+            };
+
+            const response = fetch(import.meta.env.VITE_API_URL + '/edit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            tg.close();
+        };
+
+        reader.readAsDataURL(file);
+    } else {
+        const formData = {
+            name: name,
+            logo: null,
+            prime: prime,
+            leader: leader,
+            manager: manager,
+            trainer: trainer,
+            kick: kick
+        };
+
+        const response = fetch(import.meta.env.VITE_API_URL + '/edit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        });
+        tg.close();
+    }
 });
