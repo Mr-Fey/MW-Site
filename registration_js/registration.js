@@ -23,7 +23,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
                 chat_id: tg.initDataUnsafe.user.id
             };
 
-            const response = fetch(import.meta.env.VITE_API_URL + '/register', {
+            const response = fetch("https://only-charming-wahoo.ngrok-free.app" + '/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
@@ -40,7 +40,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
             chat_id: tg.initDataUnsafe.user.id
         };
 
-        const response = fetch(import.meta.env.VITE_API_URL + '/register', {
+        const response = fetch("https://only-charming-wahoo.ngrok-free.app" + '/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
