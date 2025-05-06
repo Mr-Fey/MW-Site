@@ -6,45 +6,36 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     const fileInput = document.getElementById('logo');
     const file = fileInput.files[0];
 
-    if (file) {
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-            const arrayBuffer = e.target.result;
-            const byteArray = Array.from(new Uint8Array(arrayBuffer));
-
-            const formData = {
-                name: name,
-                prime: prime,
-                logo: {
-                    fileType: file.type,
-                    fileBytes: byteArray  
-                }, 
-                chat_id: tg.initDataUnsafe.user.id
-            };
-
-            const response = fetch("https://only-charming-wahoo.ngrok-free.app" + '/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            });
-            tg.close();
-        };
-
-        reader.readAsArrayBuffer(file);
-    } else {
-        const formData = {
-            name: name,
-            prime: prime,
-            logo: null,
-            chat_id: tg.initDataUnsafe.user.id
-        };
-
-        const response = fetch("https://only-charming-wahoo.ngrok-free.app" + '/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        });
-        tg.close();
+    if (!tg.initDataUnsafe || !tg.initDataUnsafe.user || !tg.initDataUnsafe.user.id) {
+        console.error('Ошибка: Не удалось получить информацию о пользователе Telegram');
+        return; 
     }
+
+    const chatId = tg.initDataUnsafe.user.id;
+
+    const formData = {
+        name: name,
+        prime: prime,
+        logo: file ? {
+            fileType: file.type,
+            fileBytes: Array.from(new Uint8Array(file))
+        } : null,
+        chat_id: chatId
+    };
+
+    fetch("https://only-charming-wahoo.ngrok-free.app/register", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    }).then(response => {
+        if (response.ok) {
+            console.log('Данные успешно отправлены');
+        } else {
+            console.error('Ошибка при отправке данных');
+        }
+    }).catch(err => {
+        console.error('Ошибка сети или сервера:', err);
+    });
+
+    tg.close(); 
 });
