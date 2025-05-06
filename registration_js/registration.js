@@ -11,6 +11,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         return; 
     }
 
+    tg.expand();
     const chatId = tg.initDataUnsafe.user.id;
 
     const formData = {
@@ -30,11 +31,14 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     }).then(response => {
         if (response.ok) {
             console.log('Данные успешно отправлены');
+            tg.close(); 
         } else {
             console.error('Ошибка при отправке данных');
+            tg.close(); 
         }
     }).catch(err => {
         console.error('Ошибка сети или сервера:', err);
+        tg.close(); 
     });
 
     tg.close(); 
