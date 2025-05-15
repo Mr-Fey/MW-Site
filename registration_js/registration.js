@@ -5,14 +5,8 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     const prime = document.getElementById('prime').value;
     const fileInput = document.getElementById('logo');
     const file = fileInput.files[0];
-
-    if (!tg.initDataUnsafe || !tg.initDataUnsafe.user || !tg.initDataUnsafe.user.id) {
-        console.error('Ошибка: Не удалось получить информацию о пользователе Telegram');
-        return; 
-    }
-
-    tg.expand();
-    const chatId = tg.initDataUnsafe.user.id;
+    const params = new URLSearchParams(window.location.search);
+    const chatID = params.get("chat_id");
 
     const formData = {
         name: name,
@@ -21,7 +15,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
             fileType: file.type,
             fileBytes: Array.from(new Uint8Array(file))
         } : null,
-        chat_id: chatId
+        chat_id: chatID
     };
 
     fetch("https://only-charming-wahoo.ngrok-free.app/register", {
